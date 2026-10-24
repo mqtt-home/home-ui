@@ -56,9 +56,10 @@
 :root[data-embed="wall-display"] .px-safe { padding-left: var(--wd-page-padding); padding-right: var(--wd-page-padding); }
 :root[data-embed="wall-display"] .top-bar { background: transparent; border-bottom-color: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
 /* The panel's web view starts at the screen edge (no status bar, top inset 0):
-   keep the sticky headers off it (once: an .app-head inside a .top-bar is
-   already clear). */
-:root[data-embed="wall-display"] :is(.top-bar, .app-head:not(.top-bar .app-head)) { padding-top: var(--wd-edge-inset, 10px); }
+   keep the sticky headers off it. Only in the page the panel shows directly
+   (data-embed-top, set by the prepaint script), not in an app framed inside
+   it, and only once when an .app-head sits inside a .top-bar. */
+:root[data-embed="wall-display"][data-embed-top] :is(.top-bar, .app-head:not(.top-bar .app-head)) { padding-top: var(--wd-edge-inset, 10px); }
 
 /* cards and controls: the panel's frosted surface, hairline stroke, no shadow */
 :root[data-embed="wall-display"] :is(.card, .pill, .btn, .field, .alert-banner) {

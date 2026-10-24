@@ -101,7 +101,7 @@ tokens onto the panel's: transparent page, frosted `--wd-surface` cards,
 `--wd-surface-raised` controls, hairline strokes, no shadows, `color-scheme: dark`
 (the panel sets it only in its main frame, so every UI must set it itself),
 icons by colour without a filled chip, headers `--wd-edge-inset` (10px) off the
-top edge, 44pt targets. Status, energy and group colours stay.
+top edge in the page the panel shows directly (not in framed apps), 44pt targets. Status, energy and group colours stay.
 
 Everything is gated on the attribute; normal browsers are unaffected. An app
 adds rules for its own components the same way:

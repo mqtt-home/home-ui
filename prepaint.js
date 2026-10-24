@@ -19,6 +19,11 @@ export const PREPAINT = `(function () {
   } catch (e) {}
   if (!root.dataset.embed && / WallDisplay\\//.test(navigator.userAgent)) root.dataset.embed = 'wall-display'
   var embedded = root.dataset.embed === 'wall-display'
+  // Only the page the panel shows directly sits at the screen edge; an app
+  // framed inside it (the start page's app view) is already below a header.
+  var top = true
+  try { top = window.self === window.top } catch (e) { top = false }
+  if (embedded && top) root.dataset.embedTop = ''
   var mq = matchMedia('(prefers-color-scheme: dark)')
   function apply() {
     var dark = embedded || mq.matches
