@@ -1,6 +1,6 @@
 {
   "name": "@mqtt-home/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Home OS look for the mqtt-home UIs: tokens, components, Wall Display embed mode, prepaint script, DE/EN helper",
   "type": "module",
   "sideEffects": ["*.css"],

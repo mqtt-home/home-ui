@@ -34,4 +34,8 @@ export declare function createI18n<D extends { de: Record<string, string>; en: P
   useI18n: () => I18n<Extract<keyof D['de'], string>>
 }
 
-export declare function LangSwitch(props: { i18n: I18n<any>; className?: string }): JSX.Element
+/** Needs only lang, setLang and t('language'), so an app's extended I18n fits too. */
+export declare function LangSwitch(props: {
+  i18n: { lang: Lang; setLang: (l: Lang) => void; t: (key: any) => string }
+  className?: string
+}): JSX.Element
