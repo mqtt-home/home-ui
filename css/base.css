@@ -1,0 +1,32 @@
+/* Page defaults on the tokens. In a Tailwind app this joins Tailwind's base
+   layer; without Tailwind it is an ordinary cascade layer, so any unlayered
+   rule of the app wins. */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--canvas-mesh), var(--canvas);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--font-sans, "Geist Variable", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif);
+    font-size: 15px;
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: anywhere;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+/* Phone use: never ship a tap target below 44px. */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}

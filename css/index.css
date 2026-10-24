@@ -1,0 +1,14 @@
+/* @mqtt-home/ui for a UI without Tailwind: fonts, tokens, base, components
+   and the Wall Display embed mode. A Tailwind app imports tailwind.css instead. */
+@layer base, components;
+@import "./fonts.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
+@import "./embed.css";
+
+/* Side gutter that also clears the notch in landscape on an iPhone. */
+.px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}

@@ -1,0 +1,75 @@
+/* Home OS v2 design tokens (vboard "Home apps redesign"). Light by default;
+   dark when html has .dark or data-theme="dark" (set before first paint by the
+   prepaint script, see prepaint.js). Plain CSS, no Tailwind needed. */
+:root {
+  color-scheme: light;
+  --canvas: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-2: #F8FAFB;
+  --sunken: #EDF0F3;
+  --line: rgba(15, 23, 42, .075);
+  --line-2: rgba(15, 23, 42, .13);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 32, 52, .025);
+  --ink: #0B1220;
+  --ink-2: #384152;
+  --ink-3: #687083;
+  --ink-4: #9AA2B1;
+  --accent: #0E9F8E;
+  --accent-ink: #06786B;
+  --accent-soft: rgba(14, 159, 142, .10);
+  --focus: rgba(14, 159, 142, .35);
+  /* status: colour only ever means state */
+  --ok: #0B9B6A; --ok-soft: rgba(11, 155, 106, .10);
+  --warn: #C77700; --warn-soft: rgba(232, 145, 10, .12);
+  --alert: #E0264B; --alert-soft: rgba(224, 38, 75, .09);
+  --info: #1C7ED6; --info-soft: rgba(28, 126, 214, .10);
+  --idle: #7A8496; --idle-soft: rgba(122, 132, 150, .12);
+  /* energy and app groups */
+  --solar: #F2A10C; --battery: #14B87A; --grid: #7C5CFA; --load: #1D9BF0;
+  --g-house: #0E9F8E; --g-energy: #F2A10C; --g-devices: #1D9BF0; --g-data: #7C5CFA; --g-net: #64748B;
+  /* the Now panel is dark in both themes */
+  --hero-bg: linear-gradient(135deg, #0D1626 0%, #0B1A24 55%, #10202A 100%);
+  --hero-ink: #EAF1F6; --hero-ink-2: #9FB0C0; --hero-line: rgba(255, 255, 255, .08);
+  /* depth: ambient + key light, tinted toward navy */
+  --elevation-1: 0 1px 2px rgba(14, 32, 52, .06), 0 2px 6px -1px rgba(14, 32, 52, .06);
+  --elevation-2: 0 1px 2px rgba(14, 32, 52, .05), 0 6px 14px -6px rgba(14, 40, 60, .08), 0 16px 32px -16px rgba(10, 60, 80, .12);
+  --elevation-3: 0 2px 4px rgba(14, 32, 52, .05), 0 10px 22px -10px rgba(14, 40, 60, .10), 0 28px 56px -24px rgba(10, 60, 80, .18);
+  --surface-gradient: linear-gradient(180deg, #FFFFFF 0%, #FBFCFD 100%);
+  --surface-gradient-raised: linear-gradient(180deg, #FFFFFF 0%, #F5F8FA 100%);
+  --press: inset 0 2px 5px rgba(14, 32, 52, .12), inset 0 0 0 1px rgba(14, 32, 52, .06);
+  --inset-track: inset 0 1px 2px rgba(14, 32, 52, .10);
+  --ico-hl: rgba(255, 255, 255, .75);
+  --canvas-mesh: radial-gradient(1100px 620px at 8% -8%, rgba(14, 159, 142, .05), transparent 62%),
+    radial-gradient(900px 640px at 100% 4%, rgba(124, 92, 250, .035), transparent 60%);
+  --r-sm: 10px; --r-md: 14px; --r-lg: 20px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --t-fast: 120ms; --t-base: 200ms;
+}
+
+:root.dark, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #090B0F; --surface: #111419; --surface-2: #151920; --sunken: #0C0F13;
+  --line: rgba(255, 255, 255, .065); --line-2: rgba(255, 255, 255, .12);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, .065), inset 0 0 0 1px rgba(255, 255, 255, .012);
+  --ink: #ECEFF4; --ink-2: #BAC2CE; --ink-3: #848D9C; --ink-4: #5B6372;
+  --accent: #2DD4BF; --accent-ink: #5EEAD4; --accent-soft: rgba(45, 212, 191, .12); --focus: rgba(45, 212, 191, .4);
+  --ok: #34D399; --ok-soft: rgba(52, 211, 153, .12);
+  --warn: #FBBF24; --warn-soft: rgba(251, 191, 36, .12);
+  --alert: #FB7185; --alert-soft: rgba(251, 113, 133, .12);
+  --info: #60A5FA; --info-soft: rgba(96, 165, 250, .12);
+  --idle: #8B95A7; --idle-soft: rgba(139, 149, 167, .12);
+  --solar: #FBBF24; --battery: #34D399; --grid: #A78BFA; --load: #38BDF8;
+  --g-house: #2DD4BF; --g-energy: #FBBF24; --g-devices: #38BDF8; --g-data: #A78BFA; --g-net: #94A3B8;
+  --hero-bg: linear-gradient(135deg, #0F1A26 0%, #0C1820 60%, #0F1E26 100%);
+  /* dark: depth from lighter surfaces and faint rims; shadows only anchor */
+  --elevation-1: 0 1px 2px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .015);
+  --elevation-2: 0 2px 4px rgba(0, 0, 0, .5), 0 14px 30px -12px rgba(0, 0, 0, .75);
+  --elevation-3: 0 4px 10px rgba(0, 0, 0, .5), 0 26px 52px -18px rgba(0, 0, 0, .85), 0 0 0 1px rgba(255, 255, 255, .025);
+  --surface-gradient: linear-gradient(180deg, #161B22 0%, #11151B 100%);
+  --surface-gradient-raised: linear-gradient(180deg, #1D232C 0%, #171C24 100%);
+  --press: inset 0 2px 6px rgba(0, 0, 0, .55), inset 0 0 0 1px rgba(255, 255, 255, .03);
+  --inset-track: inset 0 1px 3px rgba(0, 0, 0, .55);
+  --ico-hl: rgba(255, 255, 255, .09);
+  --canvas-mesh: radial-gradient(1100px 620px at 8% -8%, rgba(45, 212, 191, .04), transparent 62%),
+    radial-gradient(900px 640px at 100% 4%, rgba(167, 139, 250, .03), transparent 60%);
+}

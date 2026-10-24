@@ -1,0 +1,47 @@
+/* @mqtt-home/ui for a Tailwind 4 app. Import it right after Tailwind:
+
+     @import "tailwindcss";
+     @import "@mqtt-home/ui/tailwind.css";
+
+   then add only the app's own styles. */
+@import "./fonts.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
+@import "./embed.css";
+
+/* Dark mode: html.dark and html[data-theme=dark] are both set by the prepaint script. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The usual Tailwind names, on the Home OS tokens. */
+@theme inline {
+  --font-sans: "Geist Variable", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+  --color-border: var(--line-2);
+  --color-ring: var(--accent);
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--canvas);
+  --color-muted: var(--sunken);
+  --color-muted-foreground: var(--ink-3);
+  --color-accent: var(--sunken);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-input: var(--line-2);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-secondary: var(--sunken);
+  --color-secondary-foreground: var(--ink);
+  --color-accent-foreground: var(--ink);
+  --color-success: var(--ok);
+  --color-warning: var(--warn);
+  --color-destructive: var(--alert);
+  --color-destructive-foreground: #fff;
+}
+
+/* Side gutter that also clears the notch in landscape on an iPhone. */
+@utility px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
