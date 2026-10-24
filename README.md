@@ -19,7 +19,10 @@ Installed from a Git tag, not from a registry:
 ```
 
 pnpm downloads the tagged tarball from GitHub (no `git` needed in CI) and
-records its commit in the lockfile. The 7-day `minimumReleaseAge` rule applies to
+records its commit in the lockfile. Write the spec into package.json and run
+`pnpm install`; `pnpm add "@mqtt-home/ui@github:…"` records an SSH git URL
+(`git@github.com:…`) that CI cannot fetch. Check the lockfile shows
+`codeload.github.com/…/tar.gz/<commit>`. The 7-day `minimumReleaseAge` rule applies to
 registry packages only, so our own releases are usable at once while its two
 dependencies (`@fontsource-variable/geist`, `-mono`) stay under the rule.
 Renovate updates the tag like any other dependency.
